@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mvc.model.ThreadMapper">
+
+	<select id = "count" resultType = "java.lang.Integer">
+		select count(*) from post	
+	</select>
+
+	<select id = "insert" parameterType="post">
+		insert into post (id, name, title, registerdate) values (#{id}, #{name}, #{title}, CURRENT_TIME())
+	</select>	
+		
+	<select id = "select" resultType="post">
+		select  no, id, name, title, registerdate from post 
+	</select>		
+	
+	<select id="page" parameterType="map"  resultType="post">
+		select	no, id, name, title, registerdate from post limit #{start}, #{end}
+	
+	</select>
+	
+</mapper>
